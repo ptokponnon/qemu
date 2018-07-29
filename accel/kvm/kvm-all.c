@@ -1990,7 +1990,8 @@ int kvm_cpu_exec(CPUState *cpu)
         case KVM_EXIT_SHUTDOWN:
             DPRINTF("shutdown\n");
             qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-            ret = EXCP_INTERRUPT;
+//            ret = EXCP_INTERRUPT; // We introduce core dump on triple fault, 
+            ret = EXCP_TRIPLE;      // Let's signal triple fault
             break;
         case KVM_EXIT_UNKNOWN:
             fprintf(stderr, "KVM: unknown exit, hardware reason %" PRIx64 "\n",

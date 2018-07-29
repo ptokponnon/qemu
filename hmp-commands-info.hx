@@ -896,6 +896,22 @@ STEXI
 Show SEV information.
 ETEXI
 
+#if defined(TARGET_I386)   
+    {
+        .name       = "pg",
+        .args_type  = "",
+        .params     = "",
+        .help       = "show the page table",
+        .cmd = pg_info,
+    },
+#endif
+
+STEXI
+@item info pg
+@findex info pg
+Show the active page table.
+ETEXI
+    
 STEXI
 @end table
 ETEXI
